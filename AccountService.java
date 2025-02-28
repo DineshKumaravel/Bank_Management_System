@@ -21,49 +21,14 @@ public class AccountService {
     }
 
 
-//    public String addAccount(List<UserAccount> useraccount) {
-//
-//        accountrepo.saveAll(useraccount);
-//        return "New Account Successfully Created...";
-//
-//    }
+    public String addAccount(List<UserAccount> useraccount) {
 
-
-    public String creditMoney(int accNo, int money) {
-
-        Optional<UserAccount> account = accountrepo.findById(accNo);
-
-        if (account.isPresent()) {
-
-            UserAccount useraccount = account.get();
-
-            useraccount.setAccountBalance(useraccount.getAccountBalance() + money);
-
-            accountrepo.save(useraccount);
-
-            return "Transaction Successfully Completed...";
-        } else {
-            return "Account not found in Database...";
-        }
+        accountrepo.saveAll(useraccount);
+        return "New Account Successfully Created...";
 
     }
 
-    public String debitMoney(int accNo, int money) {
 
-        Optional<UserAccount> account = accountrepo.findById(accNo);
 
-        if (account.isPresent()) {
 
-            UserAccount useraccount = account.get();
-
-            useraccount.setAccountBalance(useraccount.getAccountBalance() - money);
-
-            accountrepo.save(useraccount);
-
-            return "Transaction Successfully Completed...";
-
-        } else {
-            return "Account not found in Database...";
-        }
-    }
 }
